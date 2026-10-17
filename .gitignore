@@ -1,0 +1,9 @@
+.env.local
+.env
+*.pbix
+*.pbit
+*.bak
+__pycache__/
+*.py[cod]
+.venv/
+venv/
