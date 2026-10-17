@@ -213,6 +213,9 @@ function render() {
   text('voucher-count', number.format(sum(ytdRows, 'voucherCount')));
   const latest = [...actuals].sort((a, b) => val(b, 'monthSort') - val(a, 'monthSort'))[0];
   text('freshness', `آخرین سند در مدل: ${latest ? get(latest, 'lastVoucherDate') : 'نامشخص'}`);
+  text('header-period', selectedMonth === 'all'
+    ? `سال مالی ${number.format(selectedYear)} · تا ${monthTitle(latestMonth)}`
+    : `سال مالی ${number.format(selectedYear)} · ${monthTitle(selectedMonth)}`);
   renderTrend(actuals);
   renderBalance(balance);
   renderPnl(displayedRows);
@@ -236,6 +239,7 @@ function setup() {
     button.classList.add('active');
     el(button.dataset.view).classList.add('active');
     text('page-title', button.dataset.title);
+    text('section-path', button.dataset.title);
   }));
   render();
 }

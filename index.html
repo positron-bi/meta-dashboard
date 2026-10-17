@@ -1,77 +1,90 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="داشبورد مالی مدیریتی مانیان — نمای کلی، سود و زیان و بودجه و عملکرد" />
-    <title>داشبورد مالی مانیان</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <aside class="sidebar">
-      <div class="brand"><span class="brand-mark">م</span><span>مانیان</span></div>
-      <p class="sidebar-label">گزارش‌های مدیریتی</p>
-      <nav aria-label="ناوبری داشبورد">
-        <button class="nav-item active" data-view="overview" data-title="نمای کلی مالی"><span>◈</span>نمای کلی</button>
-        <button class="nav-item" data-view="pnl" data-title="سود و زیان"><span>↗</span>سود و زیان</button>
-        <button class="nav-item" data-view="budget" data-title="بودجه و عملکرد"><span>◫</span>بودجه و عملکرد</button>
-      </nav>
-      <div class="sidebar-foot">داده‌ها به‌صورت ماهانه تجمیع شده‌اند<br />ریز اسناد حسابداری در سایت منتشر نمی‌شود.</div>
-    </aside>
-
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142d4d">
+  <meta name="description" content="داشبورد مالی مدیریتی مانیان؛ نمای کلی، سود و زیان و بودجه در برابر عملکرد">
+  <title>داشبورد مالی مانیان</title>
+  <link rel="stylesheet" href="styles.css?v=20261017a">
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand"><span class="brand-icon">M</span><span><b>مانیان</b><small>داشبورد مالی مدیریتی</small></span></div>
+      <div class="header-meta"><span>گزارش مالی</span><span class="header-divider"></span><span id="header-period">سال مالی ۱۴۰۵</span></div>
+    </div>
+  </header>
+  <div class="report-shell">
+    <nav class="report-nav" aria-label="صفحات گزارش">
+      <button class="nav-item active" type="button" data-view="overview" data-title="نمای کلی مالی" aria-current="page">نمای کلی</button>
+      <button class="nav-item" type="button" data-view="pnl" data-title="سود و زیان">سود و زیان</button>
+      <button class="nav-item" type="button" data-view="budget" data-title="بودجه و عملکرد">بودجه و عملکرد</button>
+    </nav>
     <main>
-      <header class="topbar">
-        <div><p class="eyebrow">گزارش مالی مدیریتی</p><h1 id="page-title">نمای کلی مالی</h1></div>
-        <div class="header-actions">
-          <label class="period-picker">سال <select id="year-select" aria-label="انتخاب سال"></select></label>
-          <label class="period-picker">ماه <select id="month-select" aria-label="انتخاب ماه"></select></label>
-          <span class="freshness" id="freshness">در حال بارگذاری…</span>
+      <div class="report-toolbar">
+        <div class="report-heading">
+          <div class="section-overline">گزارش مدیریتی / <span id="section-path">نمای کلی</span></div>
+          <h1 id="page-title">نمای کلی مالی</h1>
+          <p>داشبورد مالی مانیان · مبالغ به میلیارد تومان</p>
         </div>
-      </header>
+        <div class="filters">
+          <div class="filter-panel"><label for="year-select">سال مالی</label><select id="year-select" aria-label="انتخاب سال مالی"></select></div>
+          <div class="filter-panel"><label for="month-select">ماه</label><select id="month-select" aria-label="انتخاب ماه"></select></div>
+        </div>
+      </div>
+      <div class="status-strip"><span class="status-dot"></span><span id="freshness">در حال بارگذاری داده‌ها…</span><span class="status-spacer"></span><span class="unit-label">داده‌ها به‌صورت ماهانه تجمیع شده‌اند</span></div>
 
-      <section id="overview" class="view active">
-        <section class="kpis" aria-label="شاخص‌های کلیدی">
-          <article class="kpi"><p>درآمد واقعی</p><strong id="overview-revenue">—</strong><small>میلیارد تومان، از ابتدای سال</small></article>
-          <article class="kpi"><p>سود قبل از مالیات</p><strong id="overview-profit">—</strong><small>میلیارد تومان، از ابتدای سال</small></article>
-          <article class="kpi"><p>دارایی کل</p><strong id="overview-assets">—</strong><small>میلیارد تومان، مانده تا ماه انتخابی</small></article>
-          <article class="kpi accent"><p>سرمایه در گردش</p><strong id="overview-working-capital">—</strong><small>دارایی جاری منهای بدهی جاری</small></article>
+      <section id="overview" class="view active" aria-label="نمای کلی">
+        <div class="section-heading"><h2>تصویر مالی</h2><span>عملکرد تجمعی سال و مانده تا ماه انتخابی</span></div>
+        <section class="kpi-grid four" aria-label="شاخص‌های کلیدی">
+          <article class="kpi-card blue"><span class="kpi-label">درآمد واقعی</span><div class="kpi-value" id="overview-revenue">—</div><span class="kpi-foot">میلیارد تومان · از ابتدای سال</span></article>
+          <article class="kpi-card teal"><span class="kpi-label">سود قبل از مالیات</span><div class="kpi-value" id="overview-profit">—</div><span class="kpi-foot">میلیارد تومان · از ابتدای سال</span></article>
+          <article class="kpi-card indigo"><span class="kpi-label">دارایی کل</span><div class="kpi-value" id="overview-assets">—</div><span class="kpi-foot">مانده تجمعی تا ماه انتخابی</span></article>
+          <article class="kpi-card amber"><span class="kpi-label">سرمایه در گردش</span><div class="kpi-value" id="overview-working-capital">—</div><span class="kpi-foot">دارایی جاری منهای بدهی جاری</span></article>
         </section>
-        <section class="grid two">
-          <article class="card wide"><div class="card-head"><div><p class="card-kicker">روند ماهانه</p><h2>درآمد و سود عملیاتی</h2></div><div class="legend"><span class="sales-dot"></span>درآمد <span class="profit-dot"></span>سود عملیاتی</div></div><div id="trend-chart" class="chart" aria-label="نمودار درآمد و سود عملیاتی ماهانه"></div></article>
-          <article class="card"><div class="card-head"><div><p class="card-kicker">ساختار ترازنامه</p><h2>دارایی، بدهی و حقوق</h2></div></div><div id="balance-chart" class="balance-chart"></div><div id="balance-list" class="balance-list"></div></article>
-        </section>
-        <section class="grid three">
-          <article class="card ratio"><p>نسبت جاری</p><strong id="current-ratio">—</strong><small>دارایی جاری ÷ بدهی جاری</small></article>
-          <article class="card ratio"><p>نسبت بدهی به حقوق</p><strong id="debt-equity-ratio">—</strong><small>بدهی کل ÷ حقوق تعدیل‌شده</small></article>
-          <article class="card ratio"><p>تعداد اسناد دوره</p><strong id="voucher-count">—</strong><small>تجمیع‌شده؛ بدون نمایش ریز اسناد</small></article>
+        <div class="panel-grid overview-grid">
+          <section class="visual-panel"><div class="panel-heading"><div><h2>روند درآمد و سود عملیاتی</h2><p>مقایسهٔ ماهانه در سال انتخابی</p></div><div class="legend"><span><i class="key blue-key"></i>درآمد</span><span><i class="key teal-key"></i>سود عملیاتی</span></div></div><div id="trend-chart" class="chart" aria-label="نمودار ماهانه درآمد و سود عملیاتی"></div></section>
+          <section class="visual-panel"><div class="panel-heading"><div><h2>ساختار ترازنامه</h2><p>مانده تجمعی تا ماه انتخابی</p></div></div><div id="balance-chart" class="balance-chart"></div><div id="balance-list" class="balance-list"></div></section>
+        </div>
+        <div class="section-heading compact"><h2>نسبت‌های مالی و اطلاعات دوره</h2><span>بر مبنای ماندهٔ تجمعی</span></div>
+        <section class="ratio-grid">
+          <article class="ratio-card"><div>نسبت جاری</div><strong id="current-ratio">—</strong><small>دارایی جاری ÷ بدهی جاری</small></article>
+          <article class="ratio-card"><div>نسبت بدهی به حقوق</div><strong id="debt-equity-ratio">—</strong><small>بدهی کل ÷ حقوق صاحبان سهام</small></article>
+          <article class="ratio-card"><div>تعداد اسناد ثبت‌شده</div><strong id="voucher-count">—</strong><small>فقط تعداد تجمیعی؛ بدون نمایش ریز اسناد</small></article>
         </section>
       </section>
 
-      <section id="pnl" class="view">
-        <section class="kpis pnl-kpis">
-          <article class="kpi accent"><p>درآمد خالص</p><strong id="pnl-revenue">—</strong><small>میلیارد تومان</small></article>
-          <article class="kpi"><p>هزینه‌های عملیاتی و مالی</p><strong id="pnl-expenses">—</strong><small>میلیارد تومان</small></article>
-          <article class="kpi"><p>سود قبل از مالیات</p><strong id="pnl-net">—</strong><small>میلیارد تومان</small></article>
+      <section id="pnl" class="view" aria-label="سود و زیان">
+        <div class="section-heading"><h2>عملکرد صورت سود و زیان</h2><span>مقادیر تابع فیلتر سال و ماه هستند</span></div>
+        <section class="kpi-grid three">
+          <article class="kpi-card blue"><span class="kpi-label">درآمد خالص</span><div class="kpi-value" id="pnl-revenue">—</div><span class="kpi-foot">میلیارد تومان</span></article>
+          <article class="kpi-card amber"><span class="kpi-label">هزینه‌های عملیاتی و مالی</span><div class="kpi-value" id="pnl-expenses">—</div><span class="kpi-foot">میلیارد تومان</span></article>
+          <article class="kpi-card teal"><span class="kpi-label">سود قبل از مالیات</span><div class="kpi-value" id="pnl-net">—</div><span class="kpi-foot">میلیارد تومان</span></article>
         </section>
-        <article class="card"><div class="card-head"><div><p class="card-kicker">صورت سود و زیان</p><h2>ترکیب درآمد و هزینه</h2></div><span class="muted">مبالغ به میلیارد تومان</span></div><div class="table-wrap"><table class="pnl-table"><thead><tr><th>سرفصل</th><th>مبلغ</th><th>سهم از درآمد</th></tr></thead><tbody id="pnl-table"></tbody></table></div></article>
-        <article class="card monthly-card"><div class="card-head"><div><p class="card-kicker">تفکیک ماهانه</p><h2>درآمد، هزینه و سود</h2></div><span class="muted">ماه‌های بدون داده با خط تیره مشخص شده‌اند.</span></div><div class="table-wrap"><table><thead><tr><th>ماه</th><th>درآمد خالص</th><th>بهای تمام‌شده</th><th>هزینه عملیاتی</th><th>هزینه مالی</th><th>سایر درآمد</th><th>سود قبل از مالیات</th></tr></thead><tbody id="pnl-monthly-table"></tbody></table></div></article>
+        <section class="visual-panel table-panel statement-panel"><div class="panel-heading"><div><h2>صورت سود و زیان</h2><p>ترکیب درآمد و هزینه در دورهٔ انتخابی</p></div><span class="panel-unit">میلیارد تومان</span></div><div class="table-scroll"><table class="statement-table pnl-table"><thead><tr><th>سرفصل</th><th>مبلغ</th><th>سهم از درآمد</th></tr></thead><tbody id="pnl-table"></tbody></table></div></section>
+        <section class="visual-panel table-panel monthly-card"><div class="panel-heading"><div><h2>درآمد، هزینه و سود به تفکیک ماه</h2><p>ماه‌های بدون دادهٔ واقعی با خط تیره مشخص شده‌اند</p></div><span class="panel-unit">میلیارد تومان</span></div><div class="table-scroll"><table class="statement-table monthly-matrix"><thead><tr><th>ماه</th><th>درآمد خالص</th><th>بهای تمام‌شده</th><th>هزینه عملیاتی</th><th>هزینه مالی</th><th>سایر درآمد</th><th>سود قبل از مالیات</th></tr></thead><tbody id="pnl-monthly-table"></tbody></table></div></section>
       </section>
 
-      <section id="budget" class="view">
-        <section class="kpis">
-          <article class="kpi"><p>تحقق درآمد</p><strong id="revenue-achievement">—</strong><small>عملکرد ÷ بودجه</small></article>
-          <article class="kpi"><p>تحقق هزینه</p><strong id="expense-achievement">—</strong><small>عملکرد ÷ بودجه</small></article>
-          <article class="kpi accent"><p>انحراف سود</p><strong id="profit-variance">—</strong><small>عملکرد منهای بودجه</small></article>
-          <article class="kpi"><p>حاشیه سود واقعی</p><strong id="actual-margin">—</strong><small>سود قبل از مالیات ÷ درآمد</small></article>
+      <section id="budget" class="view" aria-label="بودجه و عملکرد">
+        <div class="section-heading"><h2>عملکرد نسبت به بودجه</h2><span>مقایسهٔ ماهانه بر اساس دورهٔ انتخابی</span></div>
+        <section class="kpi-grid four">
+          <article class="kpi-card blue"><span class="kpi-label">تحقق درآمد</span><div class="kpi-value" id="revenue-achievement">—</div><span class="kpi-foot">عملکرد ÷ بودجه</span></article>
+          <article class="kpi-card indigo"><span class="kpi-label">تحقق هزینه</span><div class="kpi-value" id="expense-achievement">—</div><span class="kpi-foot">عملکرد ÷ بودجه</span></article>
+          <article class="kpi-card teal"><span class="kpi-label">انحراف سود</span><div class="kpi-value" id="profit-variance">—</div><span class="kpi-foot">عملکرد منهای بودجه</span></article>
+          <article class="kpi-card amber"><span class="kpi-label">حاشیه سود واقعی</span><div class="kpi-value" id="actual-margin">—</div><span class="kpi-foot">سود عملکرد ÷ درآمد عملکرد</span></article>
         </section>
-        <section class="budget-charts">
-          <article class="card"><div class="card-head"><div><p class="card-kicker">درآمد</p><h2>بودجه و عملکرد واقعی</h2></div><div class="legend"><span class="budget-dot"></span>بودجه <span class="actual-dot"></span>عملکرد</div></div><div id="revenue-chart" class="chart compact" aria-label="مقایسه بودجه و عملکرد درآمد"></div></article>
-          <article class="card"><div class="card-head"><div><p class="card-kicker">هزینه</p><h2>بودجه و عملکرد واقعی</h2></div><div class="legend"><span class="budget-dot"></span>بودجه <span class="actual-dot"></span>عملکرد</div></div><div id="expense-chart" class="chart compact" aria-label="مقایسه بودجه و عملکرد هزینه"></div></article>
-          <article class="card"><div class="card-head"><div><p class="card-kicker">سود</p><h2>بودجه و عملکرد واقعی</h2></div><div class="legend"><span class="budget-dot"></span>بودجه <span class="actual-dot"></span>عملکرد</div></div><div id="profit-chart" class="chart compact" aria-label="مقایسه بودجه و عملکرد سود"></div></article>
-        </section>
-        <article class="card monthly-card"><div class="card-head"><div><p class="card-kicker">جدول عملکرد</p><h2>بودجه و عملکرد به تفکیک ماه</h2></div><span class="muted">مبالغ به میلیارد تومان؛ خانه‌های خالی یعنی هنوز عملکردی ثبت نشده است.</span></div><div class="table-wrap"><table class="budget-table"><thead><tr><th rowspan="2">ماه</th><th colspan="4" class="group-start">درآمد</th><th colspan="4" class="group-start">هزینه</th><th colspan="4" class="group-start">سود</th></tr><tr><th>بودجه</th><th>عملکرد</th><th>تحقق</th><th>انحراف</th><th class="group-start">بودجه</th><th>عملکرد</th><th>تحقق</th><th>انحراف</th><th class="group-start">بودجه</th><th>عملکرد</th><th>تحقق</th><th>انحراف</th></tr></thead><tbody id="budget-table"></tbody></table></div></article>
+        <div class="budget-legend"><span><i class="key slate-key"></i>بودجه</span><span><i class="key blue-key"></i>عملکرد واقعی</span><span class="budget-note">ماه‌های فاقد دادهٔ واقعی خالی هستند</span></div>
+        <div class="budget-grid">
+          <section class="visual-panel"><div class="panel-heading"><div><h2>درآمد</h2><p>بودجه و عملکرد ماهانه</p></div></div><div id="revenue-chart" class="chart budget-chart"></div></section>
+          <section class="visual-panel"><div class="panel-heading"><div><h2>هزینه</h2><p>بودجه و عملکرد ماهانه</p></div></div><div id="expense-chart" class="chart budget-chart"></div></section>
+          <section class="visual-panel"><div class="panel-heading"><div><h2>سود</h2><p>بودجه و عملکرد ماهانه</p></div></div><div id="profit-chart" class="chart budget-chart"></div></section>
+        </div>
+        <section class="visual-panel table-panel monthly-card"><div class="panel-heading"><div><h2>بودجه و عملکرد به تفکیک ماه</h2><p>عملکرد ماهانه در کنار بودجه مصوب</p></div><span class="panel-unit">میلیارد تومان</span></div><div class="table-scroll"><table class="budget-table monthly-matrix"><thead><tr><th rowspan="2">ماه</th><th colspan="4" class="group-start">درآمد</th><th colspan="4" class="group-start">هزینه</th><th colspan="4" class="group-start">سود</th></tr><tr><th>بودجه</th><th>عملکرد</th><th>تحقق</th><th>انحراف</th><th class="group-start">بودجه</th><th>عملکرد</th><th>تحقق</th><th>انحراف</th><th class="group-start">بودجه</th><th>عملکرد</th><th>تحقق</th><th>انحراف</th></tr></thead><tbody id="budget-table"></tbody></table></div></section>
       </section>
     </main>
-    <script src="app.js"></script>
-  </body>
+    <footer>مانیان · داده‌ها به‌صورت ماهانه تجمیع شده‌اند · ریز اسناد حسابداری در این داشبورد منتشر نمی‌شود</footer>
+  </div>
+  <script src="app.js?v=20261017a"></script>
+</body>
 </html>
