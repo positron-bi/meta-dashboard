@@ -211,8 +211,8 @@ function render() {
   text('current-ratio', ratio(balance.currentAssets, balance.currentLiabilities) === null ? '—' : number.format(ratio(balance.currentAssets, balance.currentLiabilities)));
   text('debt-equity-ratio', ratio(balance.liabilities, balance.equity) === null ? '—' : number.format(ratio(balance.liabilities, balance.equity)));
   text('voucher-count', number.format(sum(ytdRows, 'voucherCount')));
-  const latest = [...actuals].sort((a, b) => val(b, 'monthSort') - val(a, 'monthSort'))[0];
-  text('freshness', `آخرین سند در مدل: ${latest ? get(latest, 'lastVoucherDate') : 'نامشخص'}`);
+  const updated = new Intl.DateTimeFormat('fa-IR-u-ca-persian', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: 'Asia/Tehran' }).format(new Date(data.extractedAt));
+  text('freshness', `آخرین به‌روزرسانی داده‌ها: ${updated}`);
   text('header-period', selectedMonth === 'all'
     ? `سال مالی ${number.format(selectedYear)} · تا ${monthTitle(latestMonth)}`
     : `سال مالی ${number.format(selectedYear)} · ${monthTitle(selectedMonth)}`);
