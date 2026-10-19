@@ -1,5 +1,6 @@
 const RIALS_PER_BILLION_TOMAN = 10_000_000_000;
 const number = new Intl.NumberFormat('fa-IR', { maximumFractionDigits: 1 });
+const yearNumber = new Intl.NumberFormat('fa-IR', { useGrouping: false, maximumFractionDigits: 0 });
 const percent = new Intl.NumberFormat('fa-IR', { style: 'percent', maximumFractionDigits: 1 });
 const monthNames = ['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
 const get = (row, key) => row?.[key] ?? row?.[`[${key}]`] ?? null;
@@ -109,7 +110,7 @@ function groupedBarChart(container, items, firstLabel, secondLabel, colors = ['#
 function renderTrend(rows) {
   const items = rows.map(row => {
     const t = totals([row]);
-    return { label: number.format(val(row, 'monthNumber')), fullLabel: `${monthTitle(get(row, 'monthNumber'))} ${number.format(val(row, 'year'))}`, first: t.revenue, second: t.operationalProfit };
+    return { label: number.format(val(row, 'monthNumber')), fullLabel: `${monthTitle(get(row, 'monthNumber'))} ${yearNumber.format(val(row, 'year'))}`, first: t.revenue, second: t.operationalProfit };
   });
   groupedBarChart(el('trend-chart'), items, 'درآمد', 'سود عملیاتی', ['#2878d4', '#12a594']);
 }
@@ -214,8 +215,8 @@ function render() {
   const updated = new Intl.DateTimeFormat('fa-IR-u-ca-persian', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: 'Asia/Tehran' }).format(new Date(data.extractedAt));
   text('freshness', `آخرین به‌روزرسانی داده‌ها: ${updated}`);
   text('header-period', selectedMonth === 'all'
-    ? `سال مالی ${number.format(selectedYear)} · تا ${monthTitle(latestMonth)}`
-    : `سال مالی ${number.format(selectedYear)} · ${monthTitle(selectedMonth)}`);
+    ? `سال مالی ${yearNumber.format(selectedYear)} · تا ${monthTitle(latestMonth)}`
+    : `سال مالی ${yearNumber.format(selectedYear)} · ${monthTitle(selectedMonth)}`);
   renderTrend(actuals);
   renderBalance(balance);
   renderPnl(displayedRows);
@@ -225,7 +226,7 @@ function render() {
 function setup() {
   const years = [...new Set([...data.financialKpi.map(row => val(row, 'year')), ...data.budget.map(row => Number(String(get(row, 'period')).slice(0, 4)))])].sort((a, b) => b - a);
   const yearSelect = el('year-select');
-  years.forEach(year => yearSelect.add(new Option(number.format(year), String(year))));
+  years.forEach(year => yearSelect.add(new Option(yearNumber.format(year), String(year))));
   selectedYear = years.includes(1405) ? 1405 : years[0];
   yearSelect.value = String(selectedYear);
   const monthSelect = el('month-select');
